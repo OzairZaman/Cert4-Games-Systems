@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 58623328772290464}
   - component: {fileID: 50159916366891338}
   - component: {fileID: 114020608690498228}
+  - component: {fileID: 114838294892054368}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -91,6 +92,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   rotationSpeed: 230
+--- !u!114 &114838294892054368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1700086067891140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0baf8f5a86d364b40bf5586f3fa07ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padding: 3
+  debugColor: {r: 0, g: 0, b: 1, a: 1}
+  spriteRenderer: {fileID: 0}
 --- !u!212 &212996542971773334
 SpriteRenderer:
   m_ObjectHideFlags: 1

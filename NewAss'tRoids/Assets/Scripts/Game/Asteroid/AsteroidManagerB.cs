@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidManager : MonoBehaviour {
-
+public class AsteroidManagerB : MonoBehaviour
+{
+    #region SINGLETON
+    public static AsteroidManagerB Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+    #endregion
+    
     #region Variables
     //variables
     [Header("Asteroid Prefab References")]
@@ -15,7 +23,7 @@ public class AsteroidManager : MonoBehaviour {
     [Header("Debug")]
     public Color debugColor = Color.cyan;
     #endregion
-    
+
     #region START
     // Use this for initialization
     void Start()
@@ -29,26 +37,26 @@ public class AsteroidManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     #endregion
 
     #region Spawn() Function
     //spawns an (a single) asteroid at the provided location with random force
     //Note: position is being randomised else where
-    public void Spawn(GameObject prefab, Vector3 position)
+    public static void Spawn(GameObject prefab, Vector3 position)
     {
         //randomize the rotation of the asteroid
         Quaternion randomRotation = Quaternion.Euler(0f, 0f, Random.Range(0f, 30f));
 
         //spawn random asteroid at random positoin and default Quaternionf
-        GameObject asteroid = Instantiate(prefab, position, randomRotation, this.transform);
+        GameObject asteroid = Instantiate(prefab, position, randomRotation, Instance.transform);
 
         //get rigid body from asteroid 
         Rigidbody2D rigid = asteroid.GetComponent<Rigidbody2D>();
 
         //apply random force to rigid body
-        Vector2 randomForce = Random.insideUnitCircle * maxVelocity;
+        Vector2 randomForce = Random.insideUnitCircle * Instance.maxVelocity;
         rigid.AddForce(randomForce, ForceMode2D.Impulse);
     }
     #endregion
@@ -59,8 +67,11 @@ public class AsteroidManager : MonoBehaviour {
     //calls Spawn()
     void SpawnLoop()
     {
-        //the ranomd position inside a unit sphere with spawn padding (radius) ?? the fuck does that mean
-        Vector3 randomPos = Random.insideUnitSphere * spawnPadding;
+        //get camera bounds with padding
+        Bounds camBounds = Camera.main.GetBounds(spawnPadding);
+
+        //the ranomd position on the camera bounds
+        Vector3 randomPos = camBounds.GetRandomPosOnBounds();
 
         //generate random index
         int rand = Random.Range(0, AsteroidsPrefabs.Length);
@@ -76,8 +87,11 @@ public class AsteroidManager : MonoBehaviour {
     #region Gizmo
     private void OnDrawGizmos()
     {
+        //get camera bounds with padding
+        Bounds camBounds = Camera.main.GetBounds(spawnPadding);
+
         Gizmos.color = debugColor;
-        Gizmos.DrawWireSphere(transform.position, spawnPadding);
+        Gizmos.DrawWireCube(camBounds.center, camBounds.size);
     }
     #endregion
 

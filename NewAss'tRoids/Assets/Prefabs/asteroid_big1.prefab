@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 212656431914326304}
   - component: {fileID: 58717718190691290}
   - component: {fileID: 50539486088932814}
+  - component: {fileID: 114607170935625514}
+  - component: {fileID: 114366193181605888}
   m_Layer: 0
   m_Name: asteroid_big1
   m_TagString: Untagged
@@ -77,6 +79,36 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.96
+--- !u!114 &114366193181605888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1809944752012050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40a4db1231123d46ac1aba55c1adf54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidPieces:
+  - {fileID: 1172724818488708, guid: 9665792878d09e644a58b60bb0a19bdb, type: 2}
+  - {fileID: 1638268215363082, guid: 60b63674ef06a954ab3ee5bdad624eaa, type: 2}
+  spawnAmount: 4
+  maxVelocity: 3
+--- !u!114 &114607170935625514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1809944752012050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0baf8f5a86d364b40bf5586f3fa07ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  padding: 3
+  debugColor: {r: 0, g: 0, b: 1, a: 1}
+  spriteRenderer: {fileID: 0}
 --- !u!212 &212656431914326304
 SpriteRenderer:
   m_ObjectHideFlags: 1
