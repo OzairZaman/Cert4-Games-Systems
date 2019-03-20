@@ -90,9 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c40a4db1231123d46ac1aba55c1adf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidPieces:
-  - {fileID: 1062557514878516, guid: ab120cf777f8c2046a82c78570ae57e5, type: 2}
-  - {fileID: 1312922812537510, guid: 351ad899ea9c9704db364edb7feda689, type: 2}
+  asteroidPieces: []
   spawnAmount: 4
   maxVelocity: 3
 --- !u!114 &114744897272913702
