@@ -33,8 +33,8 @@ public class Player : MonoBehaviour {
 
         float inputHorizontal = Input.GetAxis("Horizontal");
         float inputVertical = Input.GetAxis("Vertical");
-        //rotate to left
-        this.transform.Rotate(Vector3.forward, -inputHorizontal * rotationSpeed * Time.deltaTime);
+        //rotate to left / right
+        this.transform.Rotate(Vector3.back, inputHorizontal * rotationSpeed * Time.deltaTime);
         //forward backwards
         rigid.AddForce(inputVertical*transform.up*movementSpeed);
     }
